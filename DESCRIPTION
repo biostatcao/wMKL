@@ -1,0 +1,38 @@
+Package:wMLR
+Version: 1.0.0
+Date: 2021-04-16
+Title: 
+    weight-boosted Multikernel LeaRning (wMLR)
+Author: Hongyan Cao
+Maintainer: Hongyan Cao <caohy@sxmu.edu.cn>
+Depends:
+    R (>= 3.6),
+Imports:
+    parallel,
+    Matrix,
+    stats,
+    methods,
+    Rcpp,
+    pracma,
+    RcppAnnoy,
+    RSpectra
+Suggests:
+    BiocGenerics,
+    testthat,
+    knitr,
+    igraph
+Description:
+    Cancer is known as the heterogenous disease driven by complex molecular alterations. 
+    Cancer subtypes determined from multi-omics data integration analysis can provide novel insight for personalized medicine.
+    It is recognized that incorporating prior weight into multi-omics data integration can improve disease subtyping. 
+    Here we develop such a weighted method, which we refer to as prior weight-boosted Multikernel LeaRning (wMLR). 
+    wMLR can incorporate heterogenous data types as well as flexible weight functions to boost subtype identification, 
+    providing a generic weighted modeling method. 
+Encoding: UTF-8
+LazyData: TRUE
+License: GPL
+biocViews: Clustering, CancerData
+RoxygenNote: 6.1.0
+LinkingTo: Rcpp
+NeedsCompilation: yes
+VignetteBuilder: knitr
