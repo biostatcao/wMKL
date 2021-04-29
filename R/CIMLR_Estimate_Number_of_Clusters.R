@@ -3,11 +3,11 @@
 #' @title CIMLR Estimate Number of Clusters
 #'
 #' @examples
-#' CIMLR_Estimate_Number_of_Clusters(GliomasReduced$in_X,
+#' CIMLR_Estimate_Number_of_Clusters(exampledata$PRCCReduced_X,
 #'    NUMC = 2:5,
 #'    cores.ratio = 0)
 #'
-#' @param all_data is a list of multi-omic data each of which is an (m x n) data matrix of measurements of cancer patients
+#' @param all_data is a list of multi-omic data each of which is an (n x m) data matrix of measurements of cancer patients
 #' @param NUMC vector of number of clusters to be considered
 #' @param cores.ratio ratio of the number of cores to be used when computing the multi-kernel
 #'

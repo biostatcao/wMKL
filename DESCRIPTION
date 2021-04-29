@@ -1,9 +1,12 @@
-Package:wMLR
+Package: wMLR
 Version: 1.0.0
 Date: 2021-04-16
 Title: 
     weight-boosted Multikernel LeaRning (wMLR)
-Author: Hongyan Cao
+Authors@R: c(person("Hongyan", "Cao", role=c("aut"), email="caohy@sxmu.edu.cn"),
+             person("Zhi", "Li", role=c("ctb")),
+             person("Bo", "Wang", role=c("ctb")),
+             person("Yuehua", "Cui", role=c("aut", "cre"), email="cuiy@msu.edu"))
 Maintainer: Hongyan Cao <caohy@sxmu.edu.cn>
 Depends:
     R (>= 3.6),
@@ -32,7 +35,7 @@ Encoding: UTF-8
 LazyData: TRUE
 License: GPL
 biocViews: Clustering, CancerData
-RoxygenNote: 6.1.0
+RoxygenNote: 7.1.1
 LinkingTo: Rcpp
 NeedsCompilation: yes
 VignetteBuilder: knitr

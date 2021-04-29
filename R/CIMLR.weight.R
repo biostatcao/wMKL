@@ -1,17 +1,19 @@
-#' perform the CIMLR clustering algorithm
+#' perform the CIMLR.weight clustering algorithm
 #'
-#' @title CIMLR
+#' @title CIMLR.weight
 #'
 #' @examples
-#' CIMLR(X = exampledata$PRCCReduced_X, c = 3, cores.ratio = 0)
+#' CIMLR.weight(X =exampledata$PRCCReduced_X, c = 3,
+#'              cores.ratio = 0,weight=exampledata$weightforfeatures)
 #'
 #' @param X a list of multi-omic data each of which is an (n x m) data matrix of measurements of cancer patients
 #' @param c number of clusters to be estimated over X
 #' @param no.dim number of dimensions
 #' @param k tuning parameter
 #' @param cores.ratio ratio of the number of cores to be used when computing the multi-kernel
+#' @param weight a list of weight for multi-omic data, each of which is an m dimensional vector
 #'
-#' @return clusters the patients based on CIMLR and their similarities
+#' @return clusters the patients based on CIMLR.weight and their similarities
 
 #' @return list of 8 elements describing the clusters obtained by CIMLR, of which y are the resulting clusters:
 #'      y = results of k-means clusterings,
@@ -24,7 +26,7 @@
 #'      converge = iterative convergence values by T-SNE,
 #'      LF = parameters of the clustering
 #'
-#' @export CIMLR
+#' @export CIMLR.weight
 #' @importFrom parallel stopCluster makeCluster detectCores clusterEvalQ
 #' @importFrom parallel parLapply
 #' @importFrom stats dnorm kmeans pbeta rnorm
@@ -32,7 +34,11 @@
 #' @import Matrix
 #' @useDynLib wMLR projsplx
 #'
-"CIMLR" <- function( X, c, no.dim = NA, k = 10, cores.ratio = 1 ) {
+
+#####################################################################################
+#   define the CIMLR.weight function, revise diff,and change the hecanshu#
+#####################################################################################
+"CIMLR.weight"<- function( X, c, no.dim = NA, k = 10, cores.ratio = 0 ,weight) {
 
     # set any required parameter to the defaults
     if(is.na(no.dim)) {
@@ -53,11 +59,12 @@
     # compute the kernels
     for(data_types in 1:length(X)) {
         curr_X = X[[data_types]]
+        curr_weight = weight[[data_types]]
         if(data_types==1) {
-            D_Kernels = multiple.kernel.cimlr(t(curr_X),cores.ratio)
+            D_Kernels = multiple.kernel.cimlr.weight(t(curr_X),cores.ratio,curr_weight )
         }
         else {
-            D_Kernels = c(D_Kernels, multiple.kernel.cimlr(t(curr_X),cores.ratio))
+            D_Kernels = c(D_Kernels, multiple.kernel.cimlr.weight(t(curr_X),cores.ratio,curr_weight))
         }
     }
 
@@ -225,6 +232,7 @@
     #compute the spectral clustering results,spectralClustering() from snftool
     y_spectral=spectralClustering(S,c)
 
+
     # create the structure with the results
     results = list()
     results[["y"]] = y
@@ -240,3 +248,8 @@
     return(results)
 
 }
+
+
+
+
+
