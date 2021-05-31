@@ -1,6 +1,6 @@
 Package: wMLR
 Version: 1.0.0
-Date: 2021-04-16
+Date: 2021-05-31
 Title: 
     weight-boosted Multikernel LeaRning (wMLR)
 Authors@R: c(person("Hongyan", "Cao", role=c("aut"), email="caohy@sxmu.edu.cn"),

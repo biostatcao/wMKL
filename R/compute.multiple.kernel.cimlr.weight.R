@@ -15,7 +15,7 @@ multiple.kernel.cimlr.weight= function( x, cores.ratio = 0 ,weight) {
     # compute some parameters from the kernels
     N = dim(x)[1]
     KK = 0
-    sigma = seq(2,0.1,length.out=5)
+    sigma = seq(2,1,-0.25)
 
     #####################################
     # I changed he diff as ^(1/2)       #
@@ -29,7 +29,7 @@ multiple.kernel.cimlr.weight= function( x, cores.ratio = 0 ,weight) {
     m = dim(Diff)[1]
     n = dim(Diff)[2]
     allk = seq(10,30,2)
-    #allk =c(4,6)
+
 
     # setup a parallelized estimation of the kernels
     cores = as.integer(cores.ratio * (detectCores() - 1))
@@ -86,10 +86,11 @@ multiple.kernel.cimlr.weight= function( x, cores.ratio = 0 ,weight) {
 dist2.cimlr.weight= function( x,weight) {
 
     # set the parameters for x
-
+    #change x to the weighted x
+    for (i in 1:dim(x)[1]){
+        x[i,]=sqrt(weight)*x[i,]
+    }
     c = x
-
-
     # compute the dimension
     n1 = nrow(x)
     d1 = ncol(x)
@@ -97,11 +98,6 @@ dist2.cimlr.weight= function( x,weight) {
     d2 = ncol(c)
     if(d1!=d2) {
         stop("Data dimension does not match dimension of centres.")
-    }
-
-    #change x to the weighted x
-    for (i in 1:dim(x)[1]){
-        x[i,]=sqrt(weight)*x[i,]
     }
 
     # compute the distance
