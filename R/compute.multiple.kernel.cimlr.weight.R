@@ -85,28 +85,8 @@ multiple.kernel.cimlr.weight= function( x, cores.ratio = 0 ,weight) {
 # compute the single kernel
 dist2.cimlr.weight= function( x,weight) {
 
-    # set the parameters for x
-    #change x to the weighted x
-    for (i in 1:dim(x)[1]){
-        x[i,]=sqrt(weight)*x[i,]
-    }
-    c = x
-    # compute the dimension
-    n1 = nrow(x)
-    d1 = ncol(x)
-    n2 = nrow(c)
-    d2 = ncol(c)
-    if(d1!=d2) {
-        stop("Data dimension does not match dimension of centres.")
-    }
-
-    # compute the distance
-    dist = t(rep(1,n2) %*% t(apply(t(x^2),MARGIN=2,FUN=sum))) +
-        (rep(1,n1) %*% t(apply(t(c^2),MARGIN=2,FUN=sum))) -
-        2 * (x%*%t(c))
-
-    dist[which(dist<0,arr.ind=TRUE)] = 0 #good idea,define the negative distance to 0
-
+    # weighted for x
+    y=x%*%diag(weight^(1/2))
+    dist = dist2.cimlr(y)
     return(dist)
-
 }
