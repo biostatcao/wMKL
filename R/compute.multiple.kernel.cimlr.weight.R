@@ -86,7 +86,7 @@ multiple.kernel.cimlr.weight= function( x, cores.ratio = 0 ,weight) {
 dist2.cimlr.weight= function( x,weight) {
 
     # weighted for x
-    y=x%*%diag(weight^(1/2))
+    y=t(t(x) * sqrt(weight))
     dist = dist2.cimlr(y)
     return(dist)
 }

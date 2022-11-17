@@ -2,6 +2,6 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 .Rtsne_cpp <- function(I, J, V, no_dims_in, perplexity_in, theta_in, verbose, max_iter, Y_in, init) {
-    .Call('_wMLR_Rtsne_cpp', PACKAGE = 'wMLR', I, J, V, no_dims_in, perplexity_in, theta_in, verbose, max_iter, Y_in, init)
+    .Call('_wMKL_Rtsne_cpp', PACKAGE = 'wMKL', I, J, V, no_dims_in, perplexity_in, theta_in, verbose, max_iter, Y_in, init)
 }
 

@@ -1,11 +1,9 @@
-Package: wMLR
+Package: wMKL
 Version: 1.0.0
-Date: 2021-05-31
+Date: 2022-11-1
 Title: 
-    weight-boosted Multikernel LeaRning (wMLR)
+    wMKL: a weighted multi-kernel learning model 
 Authors@R: c(person("Hongyan", "Cao", role=c("aut"), email="caohy@sxmu.edu.cn"),
-             person("Zhi", "Li", role=c("ctb")),
-             person("Bo", "Wang", role=c("ctb")),
              person("Yuehua", "Cui", role=c("aut", "cre"), email="cuiy@msu.edu"))
 Maintainer: Hongyan Cao <caohy@sxmu.edu.cn>
 Depends:
@@ -21,21 +19,24 @@ Imports:
     RSpectra
 Suggests:
     BiocGenerics,
-    testthat,
+    testthat (>= 3.0.0),
     knitr,
     igraph
 Description:
     Cancer is known as the heterogenous disease driven by complex molecular alterations. 
     Cancer subtypes determined from multi-omics data integration analysis can provide novel insight for personalized medicine.
     It is recognized that incorporating prior weight into multi-omics data integration can improve disease subtyping. 
-    Here we develop such a weighted method, which we refer to as prior weight-boosted Multikernel LeaRning (wMLR). 
-    wMLR can incorporate heterogenous data types as well as flexible weight functions to boost subtype identification, 
-    providing a generic weighted modeling method. 
+    Here we develop a weighted method, termed as prior-weight-boosted Multi-Kernel Learning (wMKL) 
+	which can incorporate heterogenous data types as well as flexible weight functions, 
+	to boost subtype identification. Given a series of weight functions, 
+	we propose an omnibus combination strategy to integrate different weight related p-values. 
+	The integrated p-values for features are then applied to update the weighted similarity kernel.  
 Encoding: UTF-8
 LazyData: TRUE
 License: GPL
 biocViews: Clustering, CancerData
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.1
 LinkingTo: Rcpp
 NeedsCompilation: yes
 VignetteBuilder: knitr
+Config/testthat/edition: 3

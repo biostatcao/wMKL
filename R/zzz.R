@@ -1,3 +1,3 @@
 .onUnload <- function( libpath ) {
-    library.dynam.unload("wMLR", libpath )
+    library.dynam.unload("wMKL", libpath )
 }

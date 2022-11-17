@@ -1,6 +1,6 @@
 Sys.setenv("R_TESTS" = "")
 
 library(testthat)
-library(wMLR)
+library(wMKL)
 
-test_check("wMLR")
+test_check("wMKL")

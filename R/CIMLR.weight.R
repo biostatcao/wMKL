@@ -32,7 +32,7 @@
 #' @importFrom stats dnorm kmeans pbeta rnorm
 #' @importFrom methods is
 #' @import Matrix
-#' @useDynLib wMLR projsplx
+#' @useDynLib wMKL projsplx
 #'
 
 #####################################################################################

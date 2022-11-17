@@ -30,7 +30,7 @@
 #' @importFrom stats dnorm kmeans pbeta rnorm
 #' @importFrom methods is
 #' @import Matrix
-#' @useDynLib wMLR projsplx
+#' @useDynLib wMKL projsplx
 #'
 "CIMLR" <- function( X, c, no.dim = NA, k = 10, cores.ratio = 1 ) {
 
